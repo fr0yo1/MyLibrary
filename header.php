@@ -16,10 +16,9 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Browse</a></li>
     </ul>
-    <form class="navbar-form navbar-left" action="/action_page.php">
+    <form class="navbar-form navbar-left" action="show_books.php">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="Search" name="search">
       </div>
