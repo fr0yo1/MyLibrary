@@ -1,3 +1,4 @@
 <?php
-	echo ("First commit");
+	$page_content = 'home.php';
+	include('master_page.php');
 ?>
