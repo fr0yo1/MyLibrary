@@ -16,14 +16,9 @@
 	if (isset($_GET["page"])) {
 		$pagenumber = $_GET["page"];
 	}
-	
 	$totalNumberOfBooks = count($books);
-	$rest = 1;
-	if ($totalNumberOfBooks % $booksPerPage == 0) {
-		$rest= 0;
-	}
-	
-	$numberOfPages = $totalNumberOfBooks/ $booksPerPage + $rest ;
+
+	$numberOfPages = $totalNumberOfBooks/ $booksPerPage;
 	
 	$books = array_slice($books, ($pagenumber - 1) * $booksPerPage, $booksPerPage);
 	

@@ -19,6 +19,7 @@ if ($password != null && $username != null) {
 	} else {
 		$_SESSION["islogged"] = true;
 		$_SESSION['username'] = $username;
+		$_SESSION['user_id'] = $result;
 		header('Location: index.php');
 	}
 }

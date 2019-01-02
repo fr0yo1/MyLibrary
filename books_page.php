@@ -9,10 +9,11 @@ for ($i = 0; $i < count($books); $i= $i + 3) {
 		if (!isset ($books[$j])) {
 			break;
 		}
-		
-		echo  ("<div class='col-sm-4 rcorners'  >");
+		$id =  $books[$j]->book_id;
 		$title = $books[$j]->book_name;
 		$author = $books[$j]->book_author;
+		
+		echo  ("<div class='col-sm-4 rcorners hoverable' onclick='location.href=\"show_book.php?id=$id\";' >");
 		echo ("<p> $title</p>");
 		echo ("<p> $author</p>");
 		echo  ("</div>");

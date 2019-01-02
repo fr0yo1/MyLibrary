@@ -30,7 +30,7 @@ public static function addNewUser($firstname,$lastname,$username,$password,$conf
            "errorMessage" => "",
            ];
 	}
-	mysqli_close($conn);
+
 }
 private static function validate($firstname,$lastname,$username,$password,$confirmedPassword) {
 	$errorMessage = "";
