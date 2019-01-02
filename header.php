@@ -22,12 +22,13 @@
       <div class="form-group">
         <input type="text" class="form-control" placeholder="Search" name="search">
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-default">Search</button>
     </form>
 	<ul class="nav navbar-nav navbar-right">
 		<?php
 			if (!isset($_SESSION["islogged"]) || $_SESSION["islogged"] == false ) {
 				echo "<li><a href='login.php'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>";
+				echo "<li><a href='signup.php'><span class='glyphicon glyphicon-log-in'></span> Sing Up</a></li>";
 			} else {
 				echo "<li><a href='#'> {$_SESSION['username']} </a></li>";
 				echo "<li><a href = 'logout.php'>Sign Out</a></li>";
