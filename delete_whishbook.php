@@ -1,8 +1,6 @@
 <?php session_start();?>
 <?php
     require ("Managers/BooksManager.php");
-	
-	$booksPerPage = 12;
 	$book_id;
 	
 	if (isset($_GET["id"])) {
@@ -10,8 +8,9 @@
 	} else {
 		echo "no book selected";
 	}
-	$book = BooksManager::selectBook($book_id);
 	
-	$page_content = "book_page.php";
-	include('master_page.php');
+	$result = BooksManager::removeFromWhislist($_SESSION['user_id'],$book_id);
+	$_SESSION['post_data_result'] = $result;
+	
+	header("Location: show_profile.php");
 ?>

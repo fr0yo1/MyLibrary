@@ -1,5 +1,7 @@
 <?php
 
+	include ('error_handling.php');
+	
 	$firstname = $user->firstname;
 
 	echo "<h1>Hello, $firstname</h1>";
@@ -16,7 +18,8 @@
 			echo "<li class='list-group-item clearfix'>
                   $book_name . $book_author
             <span class='pull-right button-group'>
-                <a href='show_book.php?id=$book_id' class='btn btn-danger'><span class='glyphicon glyphicon-remove'></span> Delete</a>
+			 <a href='show_book.php?id=$book_id' class='btn btn-info'><span class='glyphicon glyphicon-info-sign'></span> More details</a>
+             <a href='delete_whishbook.php?id=$book_id' class='btn btn-danger'><span class='glyphicon glyphicon-remove'></span> Delete</a>
             </span>
         </li>";
 		}

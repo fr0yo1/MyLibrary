@@ -67,6 +67,24 @@ public static function getWishedBooks($user_id) {
 	
 }
 
+public static function removeFromWhislist($user_id,$book_id) {
+	$conn = DatabaseConnection::getDatabaseConnection();
+	$sql = "DELETE FROM whishlist WHERE user_id = $user_id and book_id = $book_id;";
+	$result = mysqli_query($conn,$sql);
+	
+	if ($result == 0)  {
+	 return $array = [
+           "finishedSuccessfully" => 0,
+           "onErrorMessage" => "Database error:" .  mysqli_error($conn)
+           ];
+	} else {
+		return $array = [
+           "finishedSuccessfully" => 1,
+           "onSuccesMessage" => "Successfully removed from your wishlist"
+           ];
+	} 
+}
+
 public static function addToWishilist($user_id,$book_id,$quantity) {
 	$conn = DatabaseConnection::getDatabaseConnection();
 	$sql = "select * from whishlist  where user_id = $user_id and book_id = $book_id";

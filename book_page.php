@@ -1,5 +1,7 @@
 <div class="container">
 <?php
+	include ('error_handling.php');
+
     $id = $book->book_id;
 	$title = $book->book_name;
 	$author = $book->book_author;

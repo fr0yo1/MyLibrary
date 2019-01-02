@@ -14,10 +14,6 @@ if (!isset($_SESSION['islogged']) || $_SESSION['islogged'] == false ) {
 }
 $quantity = 1;
 $result = BooksManager::addToWishilist($_SESSION['user_id'],$id,$quantity);
-
-if ($result["finishedSuccessfully"] == 1) {
-	echo $result["onSuccesMessage"];
-} else {
-	echo $result["onErrorMessage"];
-}
+$_SESSION['post_data_result'] = $result;
+header("Location: show_book.php?id=$id");
 ?>
