@@ -18,6 +18,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="show_books.php">Browse</a></li>
+	  <li><a href="contact.php">Contact</a></li>
     </ul>
     <form class="navbar-form navbar-left" action="show_books.php">
       <div class="form-group">
