@@ -1,5 +1,5 @@
 <?php
-require('DatabaseConfig/dbConfig.php');
+require_once('DatabaseConfig/dbConfig.php');
 
 class Book {
 	public $book_id;
@@ -49,6 +49,52 @@ public static function allBooks() {
     }
 	
 	return $books;
+	}
+
+public static function getWishedBooks($user_id) {
+	$conn = DatabaseConnection::getDatabaseConnection();
+	$sql = "select * from whishlist w join books b on (w.book_id = b.book_id) where w.user_id = $user_id ";
+
+	$result = mysqli_query($conn,$sql);
+	
+	$books = array();
+	
+	while ($obj = mysqli_fetch_object($result,"Book")) {
+		array_push($books, $obj);
+    }
+	
+	return $books;
+	
+}
+
+public static function addToWishilist($user_id,$book_id,$quantity) {
+	$conn = DatabaseConnection::getDatabaseConnection();
+	$sql = "select * from whishlist  where user_id = $user_id and book_id = $book_id";
+	$result = mysqli_query($conn,$sql);
+	
+	$count = mysqli_num_rows($result);
+	if ($count == 0 ) {
+		$sql = "INSERT INTO whishlist (user_id, book_id, quantity) VALUES ('$user_id', '$book_id', '$quantity')";
+	} else {
+		$row = mysqli_fetch_assoc($result);
+		$oldValue = $row["quantity"];
+		$newValue = $oldValue + $quantity;
+	    $sql = "UPDATE whishlist SET quantity = $newValue where user_id = $user_id and book_id = $book_id";
+	}
+	
+	$result = mysqli_query($conn,$sql);
+	if ($result == 0) {
+	 return $array = [
+           "finishedSuccessfully" => 0,
+           "onErrorMessage" => "Database error:" .  mysqli_error($conn)
+           ];
+	} else {
+		return $array = [
+           "finishedSuccessfully" => 1,
+           "onSuccesMessage" => "Successfully added to your wishlist"
+           ];
+	} 
+
 	}
 }
 ?>

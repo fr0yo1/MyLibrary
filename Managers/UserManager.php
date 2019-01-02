@@ -1,6 +1,25 @@
 <?php
 require('DatabaseConfig/dbConfig.php');
+
+class User {
+	public $user_id;
+	public $firstname;
+	public $lastname;
+	public $email;
+	public $role_id;
+}
+
 class UserManager {
+public static function getUser($id) {
+	$sql = "SELECT * FROM user WHERE user_id = $id";
+	$result = mysqli_query(DatabaseConnection::getDatabaseConnection(),$sql);
+	if ($result == false) {
+	return null;
+	}
+	
+	$user = mysqli_fetch_object($result,"User");
+	return $user;
+}
 public static function findUser($username,$password) {
 	
 	$sql = "SELECT * FROM user WHERE email = '$username' and password = '$password'";

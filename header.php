@@ -31,7 +31,7 @@
 				echo "<li><a href='login.php'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>";
 				echo "<li><a href='signup.php'><span class='glyphicon glyphicon-log-in'></span> Sing Up</a></li>";
 			} else {
-				echo "<li><a href='#'> {$_SESSION['username']} </a></li>";
+				echo "<li><a href='show_profile.php'> {$_SESSION['username']} </a></li>";
 				echo "<li><a href = 'logout.php'>Sign Out</a></li>";
 			}				
 		?>
