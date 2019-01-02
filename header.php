@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <nav class="navbar navbar-inverse">
@@ -16,7 +17,7 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Browse</a></li>
+      <li><a href="show_books.php">Browse</a></li>
     </ul>
     <form class="navbar-form navbar-left" action="show_books.php">
       <div class="form-group">

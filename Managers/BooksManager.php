@@ -22,5 +22,20 @@ public static function searchBooks($name) {
 	
 	return $books;
 	}
+public static function allBooks() {
+	$sql = "SELECT * FROM books ORDER BY book_name";
+	$result = mysqli_query(DatabaseConnection::getDatabaseConnection(),$sql);
+	if ($result == false) {
+	return null;
+	}
+	
+	$books = array();
+	
+	while ($obj = mysqli_fetch_object($result,"Book")) {
+		array_push($books, $obj);
+    }
+	
+	return $books;
+	}
 }
 ?>
