@@ -16,7 +16,7 @@
       <a class="navbar-brand" href="#">MyLibrary</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a href="home.php">Home</a></li>
       <li><a href="show_books.php">Browse</a></li>
 	  <li><a href="contact.php">Contact</a></li>
     </ul>

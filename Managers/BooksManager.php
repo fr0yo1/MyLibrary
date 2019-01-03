@@ -25,6 +25,43 @@ public static function searchBooks($name) {
 	return $books;
 }
 
+public static function getMostViewdBooks($number) {
+	$sql = "SELECT * FROM books";
+	$result = mysqli_query(DatabaseConnection::getDatabaseConnection(),$sql);
+	if ($result == false) {
+	return null;
+	}
+	
+	$books = array();
+	
+	while ($obj = mysqli_fetch_object($result,"Book")) {
+		array_push($books, $obj);
+    }
+	
+	$books = array_slice($books, 0, $number);
+	
+	return $books;
+}
+
+public static function getMostWantedBooks($number) {
+	$sql = "select b.book_id,book_name,book_author,number from (
+			SELECT book_id,sum(quantity) as q FROM whishlist group by book_id order by q DESC) as w join books b on (w.book_id = b.book_id);";
+	$result = mysqli_query(DatabaseConnection::getDatabaseConnection(),$sql);
+	if ($result == false) {
+	return null;
+	}
+	
+	$books = array();
+	
+	while ($obj = mysqli_fetch_object($result,"Book")) {
+		array_push($books, $obj);
+    }
+	
+	$books = array_slice($books, 0, $number);
+	
+	return $books;
+}
+
 public static function selectBook($id) {
 	$sql = "SELECT * FROM books where book_id = $id";
 	$result = mysqli_query(DatabaseConnection::getDatabaseConnection(),$sql);
