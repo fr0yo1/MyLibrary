@@ -5,6 +5,7 @@ class Book {
 	public $book_id;
 	public $book_name;
 	public $book_author;
+	public $number;
 }
 
 class BooksManager {
