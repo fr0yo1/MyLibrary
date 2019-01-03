@@ -1,7 +1,6 @@
 <?php session_start();?>
 <?php
 require ('Managers/BooksManager.php');
-
 $title;
 $author;
 $quantity;
@@ -23,7 +22,14 @@ if (isset($_POST["quantity"])) {
 	$quantity = null;
 }
 
-$result = BooksManager::addNewBook($title,$author,$quantity);
+$uploadOk = 1;
+$target_file;
+$result = array();
+require ('uploadFile.php');
+
+if ($uploadOk == 1 ) {
+	$result = BooksManager::addNewBook($title,$author,$quantity,$target_file);
+}
 
 $_SESSION['post_data_result'] = $result;
 header("Location: show_books.php");

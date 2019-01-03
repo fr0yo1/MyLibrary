@@ -5,7 +5,7 @@ include ('error_handling.php');
 
 if ($isAdmin) {
 	echo '
-	<form role = "form" action = "add_new_book.php" method = "post">
+	<form role = "form" action = "add_new_book.php" method = "post" enctype="multipart/form-data">
   <div class="form-group">
     <label for="title">Title</label>
     <input type="text" class="form-control" id="title" name="title" placeholder="Title">
@@ -18,6 +18,8 @@ if ($isAdmin) {
     <label for="quantity">Quantity</label>
     <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Quantity">
   </div>
+   Select image to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
   <button type="submit" class="btn btn-primary">Add new book</button>
 </form>';
 }
@@ -34,8 +36,13 @@ for ($i = 0; $i < count($books); $i= $i + 3) {
 		$id =  $books[$j]->book_id;
 		$title = $books[$j]->book_name;
 		$author = $books[$j]->book_author;
+		$picutre =  $books[$j]->picture_path;
 		
+
 		echo  ("<div class='col-sm-4 rcorners hoverable' onclick='location.href=\"show_book.php?id=$id\";' >");
+		echo "<picture>
+				<img src=\"$picutre\" alt='Flowers' style='width:auto; height: 50px;'>
+			 </picture>";
 		echo ("<p> $title</p>");
 		echo ("<p> $author</p>");
 		echo  ("</div>");

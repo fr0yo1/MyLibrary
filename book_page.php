@@ -6,10 +6,13 @@
 	$title = $book->book_name;
 	$author = $book->book_author;
 	$quantity = $book->number;
+	$picture = $book->picture_path;
 ?>
 
 <div class="card" style="width: 18rem;">
-  <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+  <picture>
+	<img src="<?php echo $picture?>" alt="Flowers" style="width:auto; height: 200px;">
+  </picture>
   <div class="card-body">
     <h5 class="card-title"><?php echo $title ?></h5>
     <p class="card-text"><?php echo $author ?></p>

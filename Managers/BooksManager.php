@@ -6,6 +6,7 @@ class Book {
 	public $book_name;
 	public $book_author;
 	public $number;
+	public $picture_path;
 }
 
 class BooksManager {
@@ -141,7 +142,7 @@ public static function removeBook($book_id) {
 	} 
 }
 
-public static function addNewBook($book_name,$book_author,$quantity) {
+public static function addNewBook($book_name,$book_author,$quantity,$picture_path) {
 	if ($book_name == null) {
 		 return $array = [
            "finishedSuccessfully" => 0,
@@ -164,7 +165,7 @@ public static function addNewBook($book_name,$book_author,$quantity) {
 	
 	$conn = DatabaseConnection::getDatabaseConnection();
 	
-	$sql = "INSERT INTO books (book_name, book_author, number) VALUES ('$book_name', '$book_author', '$quantity')";
+	$sql = "INSERT INTO books (book_name, book_author, number, picture_path) VALUES ('$book_name', '$book_author', '$quantity','$picture_path')";
 	
 	$result = mysqli_query($conn,$sql);
 	
