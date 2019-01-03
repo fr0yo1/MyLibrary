@@ -45,7 +45,7 @@ public static function getMostViewdBooks($number) {
 }
 
 public static function getMostWantedBooks($number) {
-	$sql = "select b.book_id,book_name,book_author,number from (
+	$sql = "select b.book_id,book_name,book_author,number,picture_path from (
 			SELECT book_id,sum(quantity) as q FROM whishlist group by book_id order by q DESC) as w join books b on (w.book_id = b.book_id);";
 	$result = mysqli_query(DatabaseConnection::getDatabaseConnection(),$sql);
 	if ($result == false) {
