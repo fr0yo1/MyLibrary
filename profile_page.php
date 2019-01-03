@@ -26,4 +26,12 @@
 		?>
 		
     </ul>
+	
+	<?php
+	
+	if (count($wishedBooks)!=0) {
+		echo "<a href='bookmywhislist.php' class='btn btn-info'><span class='glyphicon glyphicon-file'> Book</span></a>";
+	}
+	
+	?>
 </div>
