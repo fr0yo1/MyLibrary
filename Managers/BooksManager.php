@@ -86,6 +86,24 @@ public static function removeFromWhislist($user_id,$book_id) {
 	} 
 }
 
+public static function removeBook($book_id) {
+	$conn = DatabaseConnection::getDatabaseConnection();
+	$sql = "DELETE FROM books WHERE book_id = $book_id;";
+	$result = mysqli_query($conn,$sql);
+	
+	if ($result == 0)  {
+	 return $array = [
+           "finishedSuccessfully" => 0,
+           "onErrorMessage" => "Database error:" .  mysqli_error($conn)
+           ];
+	} else {
+		return $array = [
+           "finishedSuccessfully" => 1,
+           "onSuccesMessage" => "Successfully removed"
+           ];
+	} 
+}
+
 public static function addNewBook($book_name,$book_author,$quantity) {
 	if ($book_name == null) {
 		 return $array = [
