@@ -1,5 +1,27 @@
 <div class="container">
 <?php
+
+include ('error_handling.php');
+
+if ($isAdmin) {
+	echo '
+	<form role = "form" action = "add_new_book.php" method = "post">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+  </div>
+  <div class="form-group">
+    <label for="author">Author</label>
+    <input type="text" class="form-control" id="author" name="author" placeholder="Author">
+  </div>
+  <div class="form-group">
+    <label for="quantity">Quantity</label>
+    <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Quantity">
+  </div>
+  <button type="submit" class="btn btn-primary">Add new book</button>
+</form>';
+}
+
 for ($i = 0; $i < count($books); $i= $i + 3) {
 	echo  ("<br>");
 	echo  ("<br>");

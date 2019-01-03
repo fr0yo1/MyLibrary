@@ -1,8 +1,10 @@
 <?php session_start();?>
 <?php
-	$booksPerPage = 12;
-    
+    require ("Managers/UserManager.php");
     require ("Managers/BooksManager.php");
+	
+	
+	$booksPerPage = 12;
 	$books =  array();
 	$search_input = "";
 	if (isset($_GET["search"]) && $_GET["search"]!= '') {
@@ -21,6 +23,11 @@
 	$numberOfPages = $totalNumberOfBooks/ $booksPerPage;
 	
 	$books = array_slice($books, ($pagenumber - 1) * $booksPerPage, $booksPerPage);
+	
+	$isAdmin = false;
+	if (isset($_SESSION['user_id'])) {
+	$isAdmin = UserManager::isAdmin($_SESSION['user_id']);
+	}
 	
 	$page_content = "books_page.php";
 	include('master_page.php');

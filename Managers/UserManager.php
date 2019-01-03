@@ -10,6 +10,15 @@ class User {
 }
 
 class UserManager {
+
+public static function isAdmin($id) {
+	$user = UserManager::getUser($id);
+	if ($user->role_id == 1) {
+		return false;
+	} 
+	return true;
+}	
+
 public static function getUser($id) {
 	$sql = "SELECT * FROM user WHERE user_id = $id";
 	$result = mysqli_query(DatabaseConnection::getDatabaseConnection(),$sql);
@@ -24,9 +33,12 @@ public static function findUser($username,$password) {
 	
 	$sql = "SELECT * FROM user WHERE email = '$username' and password = '$password'";
 	$result = mysqli_query(DatabaseConnection::getDatabaseConnection(),$sql);
-
-	$count = mysqli_num_rows($result);
-	return $count;
+	if ($result == false) {
+	return null;
+	}
+	
+	$user = mysqli_fetch_object($result,"User");
+	return $user;
 	}
 public static function addNewUser($firstname,$lastname,$username,$password,$confirmedPassword) {
 	$validationResult = UserManager::validate($firstname,$lastname,$username,$password,$confirmedPassword);

@@ -31,6 +31,8 @@ if ($password != null && $username != null && $confirmedPassword != null && $fir
 	if ($result["isValid"] == 1) {
 		$_SESSION["islogged"] = true;
 		$_SESSION['username'] = $username;
+		$user_id = UserManager::findUser($username,$password);
+		$_SESSION['user_id'] = $user_id;
 		header('Location: index.php');
 	} else {
 		echo $result["errorMessage"];

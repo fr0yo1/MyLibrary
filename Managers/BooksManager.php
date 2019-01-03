@@ -85,6 +85,46 @@ public static function removeFromWhislist($user_id,$book_id) {
 	} 
 }
 
+public static function addNewBook($book_name,$book_author,$quantity) {
+	if ($book_name == null) {
+		 return $array = [
+           "finishedSuccessfully" => 0,
+           "onErrorMessage" => "All fields must be filled"
+           ];
+	}
+	
+	if ($book_author == null) {
+		 return $array = [
+           "finishedSuccessfully" => 0,
+           "onErrorMessage" => "All fields must be filled"
+           ];
+	}
+	if ($quantity == null) {
+		 return $array = [
+           "finishedSuccessfully" => 0,
+           "onErrorMessage" => "All fields must be filled"
+           ];
+	}
+	
+	$conn = DatabaseConnection::getDatabaseConnection();
+	
+	$sql = "INSERT INTO books (book_name, book_author, number) VALUES ('$book_name', '$book_author', '$quantity')";
+	
+	$result = mysqli_query($conn,$sql);
+	
+	if ($result == 0)  {
+	 return $array = [
+           "finishedSuccessfully" => 0,
+           "onErrorMessage" => "Database error:" .  mysqli_error($conn)
+           ];
+	} else {
+		return $array = [
+           "finishedSuccessfully" => 1,
+           "onSuccesMessage" => "Successfully added new book"
+           ];
+	} 
+}
+
 public static function addToWishilist($user_id,$book_id,$quantity) {
 	$conn = DatabaseConnection::getDatabaseConnection();
 	$sql = "select * from whishlist  where user_id = $user_id and book_id = $book_id";

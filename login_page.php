@@ -13,13 +13,14 @@ if (isset($_POST["password"])) {
 }
 if ($password != null && $username != null) {
 	$result = UserManager::findUser($username,$password);
-	if ($result == 0) {
+	if ($result == null) {
 		echo "<div class='alert alert-danger' role='alert'>
 			  Username or password is incorrect</div>";
 	} else {
 		$_SESSION["islogged"] = true;
 		$_SESSION['username'] = $username;
-		$_SESSION['user_id'] = $result;
+		$user_id = $result->user_id;
+		$_SESSION['user_id'] =$user_id;
 		header('Location: index.php');
 	}
 }
